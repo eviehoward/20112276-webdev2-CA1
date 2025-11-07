@@ -211,6 +211,8 @@ const characters = [
 ];
 
 /************************UNIVERSAL FUNCTIONS************************/
+console.log(location.pathname);
+
 const capitalise = (input) => {
     let words = input.split(" "); //fill words array with each individual word
     let output = ""; //empty string
