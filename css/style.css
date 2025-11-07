@@ -1,0 +1,276 @@
+.barrio-regular {
+  font-family: "Barrio", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  background-image: url("/images/comicbookcollage.webp");
+}
+
+dialog {
+  background-color: rgb(242, 242, 242);
+  border: none;
+  margin: auto 15%;
+  max-height: 80%;
+}
+
+dialog > span {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+h1 {
+  font-family: "Barrio", system-ui;
+  font-weight: 400;
+  font-size: 4em;
+}
+
+.titles {
+  color: white;
+}
+
+#mainTable {
+  background-color: rgba(0, 0, 0, 0.78);
+  padding: 2em;
+  margin-top: 1em;
+}
+
+.timestamp {
+  color: white;
+}
+
+.ui.button {
+  background-color: #010101;
+  color: white;
+}
+
+::backdrop {
+  background-color: black;
+  opacity: 0.75;
+}
+
+#submitAddCharacter {
+  background-color: #db0000;
+}
+
+.greyBackground {
+  background-color: rgba(0, 0, 0, 0.78);
+  padding: 2em;
+  margin-top: 1em;
+  color: white;
+}
+
+.greyBackground > p {
+  color: white;
+}
+
+#characterOneBackground {
+  background-image: url("/images/character1BG.jpg");
+}
+
+#characterTwoBackground {
+  background-image: url("/images/character2BG.avif");
+}
+
+#duelResults {
+  color: white;
+  font-family: "Barrio", system-ui;
+  font-size: 8em;
+  text-align: center;
+}
+
+.duelResults {
+  text-align: center;
+}
+
+#marvelImg {
+  height: 7em;
+}
+
+#dcImg {
+  height: 10em;
+}
+
+#userPreference {
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold;
+}
+
+#marvelDC {
+  display: flex;
+  flex-direction: row;
+}
+
+.marvelDCDiv {
+  margin: auto;
+}
+
+nav {
+  width: 100%;
+  background-color: black;
+  padding: 0.2em;
+  font-family: "Barrio", system-ui;
+  font-size: 2em;
+  display: flex;
+  flex-direction: row;
+}
+
+nav > a {
+  color: white;
+  padding: 0.5em;
+}
+
+nav > a:hover {
+  color: #e30000;
+}
+
+.active {
+  color: #a80000;
+}
+
+.daysSinceP {
+  font-weight: bold;
+  font-size: 1.3em;
+  text-align: right;
+}
+
+#datamanipButtons {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 2%;
+  align-content: space-evenly;
+}
+
+#datamanipButtons > button {
+  margin: 0.1em;
+  flex: 1, 1, 20%;
+}
+
+#duel {
+  flex-grow: 5;
+  flex-shrink: 0;
+  flex-basis: 10em;
+  flex: 5, 0, 70%;
+}
+
+footer > img {
+  height: 4em;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  margin-top: 3%;
+  padding: 2em;
+}
+
+.row {
+  margin-bottom: 1.5em;
+}
+
+.row > a {
+  color: white;
+}
+
+.row > a:hover {
+  color: #bebebe;
+}
+
+.footerForm > input {
+  margin: 0 0.6em;
+}
+
+.sides {
+  background-color: rgba(0, 0, 0, 0.78);
+  color: white;
+  padding: 1em;
+}
+
+.profile > img {
+  width: 100%;
+  height: 18em;
+  object-fit: cover;
+  border: inset;
+  border-color: white;
+  border-width: thick;
+  border-radius: 100em;
+  display: block;
+  margin: auto;
+}
+
+.profile > p {
+  width: 100%;
+  font-size: 1.15em
+}
+
+.profile > h2 {
+  font-family: "Barrio", system-ui;
+  font-size: 2.8em;
+}
+
+#rightSide {
+  padding: 2em;
+}
+
+#comicCover > img {
+  height: max-content;
+  display: block;
+  margin: auto;
+  width: 312px;
+}
+
+#yourProfileForm, img {
+  height: 10em;
+}
+
+#yourProfileForm > .form-row {
+  display: block;
+  margin-bottom: 2em;
+}
+
+#yourProfile {
+  width: 60%;
+  margin: auto;
+}
+
+#radios > input {
+  margin-left: 2%;
+}
+
+#aboutGrid {
+ margin-top: 1em;
+}
+
+@media (max-width: 600px) {
+  #marvelDC {
+    flex-direction: column;
+  }
+  nav {
+    flex-direction: column;
+  }
+  .flexContainer {
+    flex-direction: column;
+  }
+  #flexOne {
+    flex-direction: column;
+  }
+  
+}
+
+@media (max-width: 1000px) {
+  #leftSide > img {
+    width: 50%;
+  }
+}
+
+.clear {
+  clear: both;
+}
+

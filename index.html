@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Welcome</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Barrio&display=swap" rel="stylesheet" />
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.js"></script>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+
+    <body>
+        <nav>
+            <a href="index.html" class="active">Welcome</a>
+            <a href="datamanipulation.html">Characters</a>
+            <a href="about.html">About</a>
+        </nav>
+        <header>
+            <div class="ui container greyBackground">
+                <h1 class="titles">Welcome</h1>
+                <p>
+                    This website stores info about comic book characters. They are divided into heroes, villains, and
+                    vigilantes.
+                </p>
+                <p>
+                    On the characters page, you will see a display of all of the characters profiles. You can add
+                    characters, remove characters, view a characters' profile in more detail, or view a random character
+                    profile.
+                </p>
+                <p>
+                    There is also a "Duel" function where you can put two characters head to head and see who would win
+                    in a fight.
+                </p>
+            </div>
+        </header>
+        <main>
+            <div class="ui container greyBackground">
+                <h2>The characters included here are from Marvel and DC, but you can add any character you want!</h2>
+                <div id="marvelDC">
+                    <div class="marvelDCDiv">
+                        <form id="preference" class="ui form">
+                            <h3>Which do you prefer?</h3>
+                            <div class="form-row">
+                                <input type="radio" name="preferenceOption" id="marvel" value="marvel" />
+                                <label for="marvel">Marvel</label>
+                            </div>
+                            <div class="form-row">
+                                <input type="radio" name="preferenceOption" id="dc" value="dc" />
+                                <label for="dc">DC</label>
+                            </div>
+                            <button type="submit" class="ui button">Submit</button>
+                        </form>
+                    </div>
+                    <div class="marvelDCDiv">
+                        <img src="images/marvellogo.png" alt="The Marvel logo" id="marvelImg" />
+                    </div>
+                    <div class="marvelDCDiv"><img src="images/dclogo.png" alt="The DC logo" id="dcImg" /></div>
+                </div>
+
+                <div id="userPreference" class="hidden"></div>
+            </div>
+            <div class="ui container greyBackground">
+                <h2>
+                    These characters come from some of the most famous comic book franchises of all time, such as...
+                </h2>
+                <div class="ui five doubling cards">
+                    <div class="card" id="theAvengersCard">
+                        <div class="image">
+                            <img src="/images/theavengers.webp" alt="A comic book cover of the Avengers featuring the main cast"/>
+                        </div>
+                        <div class="content"><div class="header">The Avengers</div></div>
+                    </div>
+                    <div class="card" id="amazingSpidermanCard">
+                        <div class="image">
+                            <img src="/images/theamazingspiderman.webp" alt="A comic book cover of Spider-Man and Venom" />
+                        </div>
+                        <div class="content"><div class="header">The Amazing Spider-Man</div></div>
+                    </div>
+                    <div class="card" id="fantasticFourCard">
+                        <div class="image">
+                            <img src="/images/thefantasticfour.webp" alt="A comic book cover where the Fantastic Four fight Galactus"/>
+                        </div>
+                        <div class="content"><div class="header">The Fantastic Four</div></div>
+                    </div>
+                    <div class="card" id="daredevilCard">
+                        <div class="image">
+                            <img src="images/daredevil.webp" alt="A comic book cover of Daredevil in the rain"/>
+                        </div>
+                        <div class="content"><div class="header">Daredevil</div></div>
+                    </div>
+                    <div class="card" id="deadpoolCard">
+                        <div class="image">
+                            <img src="images/deadpool.webp" alt="A comic book cover of Deadpool walking through fire"/>
+                        </div>
+                        <div class="content"><div class="header">Deadpool</div></div>
+                    </div>
+                    <div class="card" id="peacemakerCard">
+                        <div class="image">
+                            <img src="images/peacemaker.webp" alt="A comic book cover of Peacemaker with crashing military aircraft." />
+                        </div>
+                        <div class="content"><div class="header">Peacemaker</div></div>
+                    </div>
+                    <div class="card" id="supermanCard">
+                        <div class="image">
+                            <img src="images/superman.webp" alt="A comic book cover of Superman breaking chains of Kryptonite" />
+                        </div>
+                        <div class="content"><div class="header">Superman</div></div>
+                    </div>
+                    <div class="card" id="justiceLeagueCard">
+                        <div class="image">
+                            <img src="images/justiceleague.webp" alt="A comic book cover of the Justice League featuring the main cast." />
+                        </div>
+                        <div class="content"><div class="header">Justice League</div></div>
+                    </div>
+                    <div class="card" id="venomCard">
+                        <div class="image">
+                            <img src="images/venom.webp" alt="A comic book cover of a close up of Venom's face." />
+                        </div>
+                        <div class="content"><div class="header">Venom</div></div>
+                    </div>
+                    <div class="card" id="batmanCard">
+                        <div class="image">
+                            <img src="images/batman.webp" alt="A comic book cover of Batman running across a rooftop." />
+                        </div>
+                        <div class="content"><div class="header">Batman</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <dialog id="theAvengersDialog" closedby="any">
+                <blockquote>
+                    The Avengers are a superhero/antihero team appearing in American comic books published by Marvel
+                    Comics, created by writer-editor Stan Lee and artist/co-plotter Jack Kirby. The team made its debut
+                    in The Avengers #1 (cover-dated September 1963). Labeled "Earth's Mightiest Heroes", the original
+                    Avengers consisted of Iron Man, Ant-Man, Hulk, Thor, and Wasp. Captain America was discovered
+                    trapped in ice in issue #4, and joined the group after they revived him. The Avengers are an
+                    all-star ensemble cast of established superhero characters from the Marvel Comics portfolio.
+                </blockquote>
+                <span>From Wikipedia</span>
+                <p id="theAvengersDaysSince" class="daysSinceP"></p>
+            </dialog>
+            <dialog id="amazingSpidermanDialog" closedby="any">
+                <blockquote>
+                    The Amazing Spider-Man is an ongoing American comic book series featuring the Marvel Comics
+                    superhero Spider-Man as its title character and main protagonist. Being in the mainstream continuity
+                    of the franchise, it was the character's first title, launching seven months after his introduction
+                    in the final issue of Amazing Fantasy. The series began publication with a March 1963 cover date and
+                    has been published nearly continuously to date over six volumes with only one significant
+                    interruption. The title reached 900 issues in 2022.
+                </blockquote>
+                <span>From Wikipedia</span>
+                <p id="amazingSpidermanDaysSince" class="daysSinceP"></p>
+            </dialog>
+            <dialog id="fantasticFourDialog" closedby="any">
+                <blockquote>
+                    The four characters traditionally associated with the Fantastic Four, who gained superpowers after
+                    exposure to cosmic rays during a scientific mission to outer space, are Mister Fantastic, who can
+                    stretch his body into incredible lengths and shapes; the Invisible Woman, who can render herself
+                    invisible and project powerful invisible force fields and blasts; the Human Torch, who can generate
+                    flames, surround himself with them and fly; and the monstrous Thing, who possesses tremendous
+                    superhuman strength, durability and endurance due to his stone-like flesh. Since their 1961
+                    introduction, the Fantastic Four has been portrayed as a somewhat dysfunctional, yet loving, family.
+                </blockquote>
+                <span>From Wikipedia</span>
+                <p id="fantasticFourDaysSince" class="daysSinceP"></p>
+            </dialog>
+            <dialog id="daredevilDialog" closedby="any">
+                <blockquote>
+                    Daredevil is the alias of Matthew Michael "Matt" Murdock, a lawyer from Hell's Kitchen who was
+                    blinded in childhood in a chemical accident that enhanced his other senses. After his father Jack is
+                    killed by gangsters, Matt hones his physical abilities and superhuman senses under his mentor, the
+                    blind and mysterious Stick, becoming an expert martial artist. Eventually, in ironic contrast to his
+                    Catholic upbringing and beliefs, Matt dons a devil-like costume and takes up a dual life of fighting
+                    against the criminal underworld in New York City. This puts him in conflict with many
+                    super-villains, including his arch-enemies Bullseye and the Kingpin.
+                </blockquote>
+                <span>From Wikipedia</span>
+                <p id="daredevilDaysSince" class="daysSinceP"></p>
+            </dialog>
+            <dialog id="deadpoolDialog" closedby="any">
+                <blockquote>
+                    Deadpool is a character appearing in American comic books published by Marvel Comics. Created by
+                    Fabian Nicieza and Rob Liefeld, the character first appeared in New Mutants #98 (December 1990). In
+                    his comic book appearances, Deadpool is initially depicted as a supervillain of the New Mutants and
+                    X-Force, though later stories would portray him as an antihero. Deadpool is the alter ego of Wade
+                    Wilson, a disfigured Canadian mercenary with superhuman regenerative healing abilities.
+                </blockquote>
+                <span>From Wikipedia</span>
+                <p id="deadpoolDaysSince" class="daysSinceP"></p>
+            </dialog>
+            <dialog id="peacemakerDialog" closedby="any">
+                <blockquote>
+                    Peacemaker is a fictional antihero originally owned by Charlton Comics and later acquired by DC
+                    Comics. The Peacemaker, Christopher Smith, first appeared in Fightin' 5 #40 (November 1966) and was
+                    created by writer Joe Gill and artist Pat Boyette. Smith was depicted as a pacifist willing to do
+                    anything to bring peace to the world. The character had been featured in a short-lived comic run,
+                    and later revived after DC Comics’ acquisition of fictional characters owned by Charlton Comics.
+                    This revival also made a change to Smith's character, depicting him as a violent vigilante haunted
+                    by ghosts of his past.
+                </blockquote>
+                <span>From Wikipedia</span>
+                <p id="peacemakerDaysSince" class="daysSinceP"></p>
+            </dialog>
+            <dialog id="supermanDialog" closedby="any">
+                <blockquote>
+                    Superman is a superhero created by writer Jerry Siegel and artist Joe Shuster, first appearing in
+                    issue #1 of Action Comics, published in the United States on April 18, 1938. Superman has been
+                    regularly published in American comic books since then, and has been adapted to other media
+                    including radio serials, novels, films, television shows, theater, and video games. Superman is the
+                    archetypal superhero: he wears an outlandish costume, uses a codename, and fights evil and averts
+                    disasters with the aid of extraordinary abilities. Although there are earlier characters who
+                    arguably fit this definition, it was Superman who popularized the superhero genre and established
+                    its conventions.
+                </blockquote>
+                <span>From Wikipedia</span>
+                <p id="supermanDaysSince" class="daysSinceP"></p>
+            </dialog>
+            <dialog id="justiceLeagueDialog" closedby="any">
+                <blockquote>
+                    The Justice League, or Justice League of America (JLA), is a group of superheroes appearing in
+                    American comic books published by DC Comics. The team first appeared in The Brave and the Bold #28
+                    (March 1960). Writer Gardner Fox conceived the team as a revival of the Justice Society of America,
+                    a similar team from DC Comics from the 1940s which had been pulled out of print due to a decline in
+                    sales. The Justice League is an all-star ensemble cast of established superhero characters from DC
+                    Comics' portfolio.
+                </blockquote>
+                <span>From Wikipedia</span>
+                <p id="justiceLeagueDaysSince" class="daysSinceP"></p>
+            </dialog>
+            <dialog id="venomDialog" closedby="any">
+                <blockquote>
+                    Venom, also known formally as "The Symbiote", is a character appearing in American comic books
+                    published by Marvel Comics. The character is a sentient alien symbiote with an amorphous,
+                    liquid-like form, who survives by bonding with a host, usually human. This dual-life form receives
+                    enhanced powers and usually refers to itself as "Venom". The symbiote was originally introduced as a
+                    living alien costume in The Amazing Spider-Man #252 (May 1984), with a full first appearance as
+                    Venom in The Amazing Spider-Man #300 (May 1988).
+                </blockquote>
+                <span>From Wikipedia</span>
+                <p id="venomDaysSince" class="daysSinceP"></p>
+            </dialog>
+            <dialog id="batmanDialog" closedby="any">
+                <blockquote>
+                    Batman was created by artist Bob Kane and writer Bill Finger, and debuted in the 27th issue of the
+                    comic book Detective Comics on March 30, 1939. In the DC Universe, Batman is the alias of Bruce
+                    Wayne, a wealthy American playboy, philanthropist, and industrialist who resides in the fictional
+                    Gotham City. His origin story features him swearing vengeance against criminals after witnessing the
+                    murder of his parents, Thomas and Martha, as a child, a vendetta tempered by the ideal of justice.
+                    He trains himself physically and intellectually, crafts a bat-inspired persona, and monitors the
+                    Gotham streets at night.
+                </blockquote>
+                <span>From Wikipedia</span>
+                <p id="batmanDaysSince" class="daysSinceP"></p>
+            </dialog>
+        </main>
+        <footer>
+            <div class="ui grid">
+                <div class="thirteen wide column">
+                    <div class="row">
+                        <p><span class="year"></span>&copy; evie's website</p>
+                    </div>
+                    <div class="row">
+                        <a href="https://github.com/eviehoward" target="_blank"><i class="github large icon"></i></a>
+                        <a href="https://www.behance.net/evehoward2" target="_blank"><i class="behance large icon"></i></a>
+                        <a href="https://www.linkedin.com/in/eviehoward/" target="_blank"><i class="linkedin large icon"></i></a>
+                        <a href="https://slack.com/intl/en-ie/" target="_blank"><i class="slack large icon"></i></a>
+                    </div>
+                    <div class="row keepInTouch">
+                        <form class="footerForm">
+                            <label for="email">Keep in touch:</label>
+                            <input type="email" name="email" class="email" required placeholder="you@example.com" />
+                            <button type="submit" class="ui mini button">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <img src="images/spidermanlogo.webp" alt="The Spider-Man logo" />
+                </div>
+            </div>
+        </footer>
+        <script src="js/script.js"></script>
+        <!--<script src="js/script2.js"></script> -->
+    </body>
+</html>

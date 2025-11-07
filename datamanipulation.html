@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Add an Object</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Barrio&display=swap" rel="stylesheet" />
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.js"></script>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+
+    <body>
+        <nav>
+            <a href="index.html">Welcome</a>
+            <a href="datamanipulation.html" class="active">Characters</a>
+            <a href="about.html">About</a>
+        </nav>
+        <div class="container">
+            <div class="ui container" id="mainTable">
+                <header>
+                    <h1 id="charactersTitle" class="titles">Characters</h1>
+                </header>
+                <table class="ui unstackable padded celled selectable left aligned inverted table" id="charactersTable">
+                    <tr>
+                        <th>Name</th>
+                        <th>Alias</th>
+                        <th>Type</th>
+                        <th>Primary Colour</th>
+                        <th>Secondary Colour</th>
+                        <th>Species</th>
+                        <th>Location</th>
+                    </tr>
+                </table>
+                <p id="dateRefreshed" class="timestamp">Last refresh:</p>
+            </div>
+
+            <div class="ui buttons" id="datamanipButtons">
+                <button id="toggle" class="ui button">Add a Character</button>
+                <button id="remove" class="ui button">Remove a Character</button>
+                <button id="search" class="ui button">Search...</button>
+                <button id="expand" class="ui button">Expand...</button>
+                <button id="random" class="ui button">Show a random profile</button>
+                <button id="duel" class="ui button">Duel!</button>
+            </div>
+            <br />
+
+            <div id="searchDiv" class="hidden">
+                <div class="ui container greyBackground">
+                    <table
+                        id="searchResults"
+                        class="ui unstackable padded celled selectable inverted left aligned table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Alias</th>
+                            <th>Type</th>
+                            <th>Primary Colour</th>
+                            <th>Secondary Colour</th>
+                            <th>Species</th>
+                            <th>Location</th>
+                        </tr>
+                    </table>
+                    <p id="asOf" class="timestamp">Results as of:</p>
+                    <button id="searchHide" class="ui small button"><i class="eye slash icon"></i> Close</button>
+                </div>
+            </div>
+
+            <div id="expandDiv" class="hidden">
+                <div class="ui container greyBackground">
+                    <table
+                        id="expandResults"
+                        class="ui unstackable padded compact celled selectable left aligned inverted table"></table>
+                    <button id="expandHide" class="ui small button"><i class="eye slash icon"></i> Close</button>
+                </div>
+            </div>
+
+            <div id="duelDiv" class="hidden">
+                <div class="ui container greyBackground">
+                    <div class="ui inverted segment">
+                        <div class="ui two column grid">
+                            <div class="column duelResults" id="characterOneBackground">
+                                <h1 id="announceOne">Character One</h1>
+                            </div>
+                            <div class="column duelResults" id="characterTwoBackground">
+                                <h1 id="announceTwo">Character Two</h1>
+                            </div>
+                        </div>
+                        <div class="ui massive vertical divider">VS.</div>
+                    </div>
+
+                    <p id="duelResults"></p>
+                    <button id="duelHide" class="ui small button"><i class="eye slash icon"></i> Close</button>
+                </div>
+            </div>
+            <footer>
+            <div class="ui grid">
+                <div class="thirteen wide column">
+                    <div class="row">
+                        <p><span class="year"></span>&copy; evie's website</p>
+                    </div>
+                    <div class="row">
+                        <a href="https://github.com/eviehoward" target="_blank"><i class="github large icon"></i></a>
+                        <a href="https://www.behance.net/evehoward2" target="_blank"><i class="behance large icon"></i></a>
+                        <a href="https://www.linkedin.com/in/eviehoward/" target="_blank"><i class="linkedin large icon"></i></a>
+                        <a href="https://slack.com/intl/en-ie/" target="_blank"><i class="slack large icon"></i></a>
+                    </div>
+                    <div class="row keepInTouch">
+                        <form class="footerForm">
+                            <label for="email">Keep in touch:</label>
+                            <input type="email" name="email" class="email" required placeholder="you@example.com" />
+                            <button type="submit" class="ui mini button">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <img src="images/spidermanlogo.webp" alt="The Spider-Man logo" />
+                </div>
+            </div>
+        </footer>
+
+            <dialog id="addDialog">
+                <header class="modal__title">
+                    <h1>
+                        Add a Character?<button id="closeAdd" class="ui mini tertiary right floated button">
+                            close
+                        </button>
+                    </h1>
+                </header>
+                <form id="addCharacterForm" class="ui form">
+                    <div class="field">
+                        <label for="name">Character name*</label>
+                        <input type="text" name="name" id="name" autofocus required />
+                    </div>
+
+                    <div class="field">
+                        <label for="alias">Alias*</label>
+                        <input type="text" name="alias" id="alias" required />
+                    </div>
+                    <div class="field">
+                        <label for="type">Type*</label>
+                        <select name="type" id="type" class="ui selection dropdown" required>
+                            <option value="Hero" selected>Hero</option>
+                            <option value="Vigilante">Vigilante</option>
+                            <option value="Villain">Villain</option>
+                        </select>
+                    </div>
+                    <div class="fields">
+                        <div class="field">
+                            <label for="strengthRating">Strength Rating</label>
+                            <input type="number" id="strengthRating" name="strengthRating" min="0" max="10" required />
+                        </div>
+                        <br />
+                        <div class="field">
+                            <label for="agilityRating">Agility Rating</label>
+                            <input type="number" id="agilityRating" name="agilityRating" min="0" max="10" required />
+                        </div>
+                        <br />
+                        <div class="field">
+                            <label for="intelligenceRating">Intelligence Rating</label>
+                            <input
+                                type="number"
+                                id="intelligenceRating"
+                                name="intelligenceRating"
+                                min="0"
+                                max="10"
+                                required />
+                        </div>
+                    </div>
+                    <div class="fields">
+                        <div class="field">
+                            <label for="primaryColour">Primary Colour</label>
+                            <input type="color" name="primaryColour" id="primaryColour" value="#ba0000" />
+                        </div>
+                        <div class="hidden field" id="secondaryColourDiv">
+                            <label for="secondaryColour">Secondary Colour</label>
+                            <input type="color" name="secondaryColour" id="secondaryColour" value="#0000c4" />
+                        </div>
+                    </div>
+                    <div class="ui toggle checkbox">
+                        <input type="checkbox" name="secondaryColourCheckbox" id="secondaryColourCheckbox" />
+                        <label for="secondaryColourCheckbox">Include a secondary colour?</label>
+                    </div>
+
+                    <div class="field">
+                        <label for="species">Species*</label>
+                        <input type="text" name="species" id="species" required />
+                    </div>
+                    <div class="field">
+                        <label for="location">Location</label>
+                        <input type="text" name="location" id="location" />
+                    </div>
+                    <div class="field">
+                        <label for="quote">Quote</label>
+                        <textarea id="quote" name="quote"></textarea>
+                    </div>
+                    <br />
+                    <button id="submitAddCharacter" type="submit" class="ui small primary right floated button">
+                        Add character!
+                    </button>
+                    <button type="reset" class="ui small secondary right floated button">Clear</button>
+                </form>
+            </dialog>
+
+            <dialog id="removeDialog">
+                <header class="modal__title">
+                    <h1>
+                        Remove a Character<button id="closeRemove" class="ui mini right floated tertiary button">
+                            close
+                        </button>
+                    </h1>
+                </header>
+                <table id="removeTable" class="ui unstackable padded celled selectable left aligned table"></table>
+            </dialog>
+
+            <dialog id="searchDialog">
+                <header class="modal__title">
+                    <h1>
+                        Search Characters<button id="closeSearch" class="ui mini right floated tertiary button">
+                            close
+                        </button>
+                    </h1>
+                    <form id="searchForm" class="ui form">
+                        <p>What would you like to search by?</p>
+                        <div class="form-row">
+                            <label for="searchName">Name</label>
+                            <input type="radio" name="searchOption" id="searchName" value="name" />
+                        </div>
+                        <div class="form-row">
+                            <label for="searchAlias">Alias</label>
+                            <input type="radio" name="searchOption" id="searchAlias" value="alias" />
+                        </div>
+                        <div class="form-row">
+                            <label for="searchType">Type</label>
+                            <input type="radio" name="searchOption" id="searchType" value="type" />
+                        </div>
+
+                        <div class="form-row">
+                            <label for="searchSpecies">Species</label>
+                            <input type="radio" name="searchOption" id="searchSpecies" value="species" />
+                        </div>
+                        <div class="form-row">
+                            <label for="searchLocation">Location</label>
+                            <input type="radio" name="searchOption" id="searchLocation" value="location" />
+                        </div>
+                        <button type="submit" class="ui primary right floated button">Continue to Search</button>
+                        <button type="reset" class="ui secondary right floated button">Clear</button>
+                    </form>
+                </header>
+            </dialog>
+
+            <dialog id="expandDialog">
+                <header class="modal__title">
+                    <h1>
+                        Expand a character profile...<button
+                            id="closeExpand"
+                            class="ui mini tertiary right floated button">
+                            close
+                        </button>
+                    </h1>
+                </header>
+                <form id="expandForm">
+                    <p>Select a character</p>
+                    <select id="expandSelect" name="expandSelect" class="ui selection dropdown"></select>
+                    <button type="submit" class="ui small primary right floated button">Expand</button>
+                </form>
+            </dialog>
+
+            <dialog id="duelDialog">
+                <header class="modal__title">
+                    <h1>
+                        Who do you want to put head to head?<button
+                            id="closeDuel"
+                            class="ui mini tertiary right floated button">
+                            close
+                        </button>
+                    </h1>
+                </header>
+                <form id="duelForm" class="ui form">
+                    <p>Select two characters</p>
+                    <select id="duelSelectFirst" name="duelSelectFirst" class="ui selection dropdown"></select>
+                    <p>VS</p>
+                    <select id="duelSelectSecond" name="duelSelectSecond" class="ui selection dropdown"></select>
+
+                    <p>What category should they battle on?</p>
+                    <div class="form-row">
+                        <label for="duelStrength">Strength</label>
+                        <input type="radio" name="duelCategory" id="duelStrength" value="strengthRating" />
+                    </div>
+                    <div class="form-row">
+                        <label for="duelAgility">Agility</label>
+                        <input type="radio" name="duelCategory" id="duelAgility" value="agilityRating" />
+                    </div>
+                    <div class="form-row">
+                        <label for="duelIntelligence">Intelligence</label>
+                        <input type="radio" name="duelCategory" id="duelIntelligence" value="intelligenceRating" />
+                    </div>
+                    <div class="form-row">
+                        <label for="duelPower">Overall Power</label>
+                        <input type="radio" name="duelCategory" id="duelPower" value="powerRating" />
+                    </div>
+                    <button type="submit" class="ui small primary right floated button">Duel!</button>
+                </form>
+            </dialog>
+        </div>
+
+
+        <script src="js/script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>About</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Barrio&display=swap" rel="stylesheet" />
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.js"></script>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <nav>
+            <a href="index.html">Welcome</a>
+            <a href="datamanipulation.html">Characters</a>
+            <a href="about.html" class="active">About</a>
+        </nav>
+        <header>
+            <div class="ui container greyBackground">
+                <h1 class="titles">About</h1>
+                <p>About this website, the designer (me!), etc....</p>
+            </div>
+        </header>
+        <main>
+            <div class="ui stackable grid container" id="aboutGrid">
+                <div class="sixteen wide mobile four wide computer stretched column">
+                    <div id="leftSide" class="sides profile">
+                        <h2>My Profile !</h2>
+                        <img src="images/meee.jpg" />
+                        <p id="myProfile"></p>
+
+                        <p id="response"></p>
+                        <div id="profileButtonDiv">
+                            <button id="profileButton" class="ui right floated button">Nice profile!</button>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="yourProfileDiv" class="profile"></div>
+                    </div>
+                </div>
+                <div class="sixteen wide mobile twelve wide computer stretched column">
+                    <div id="rightSide" class="sides">
+                        <h1>Comic Book Covers</h1>
+                        <div id="comicCover">
+                            <img src="images/batman.webp" />
+                        </div>
+                        <button class="ui left floated button" id="previous">
+                            <i class="arrow left icon"></i>Previous
+                        </button>
+                        <button class="ui right floated button" id="next">Next<i class="arrow right icon"></i></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="ui grid">
+                <div class="thirteen wide column">
+                    <div class="row">
+                        <p><span class="year"></span>&copy; evie's website</p>
+                    </div>
+                    <div class="row">
+                        <a href="https://github.com/eviehoward" target="_blank"><i class="github large icon"></i></a>
+                        <a href="https://www.behance.net/evehoward2" target="_blank"><i class="behance large icon"></i></a>
+                        <a href="https://www.linkedin.com/in/eviehoward/" target="_blank"><i class="linkedin large icon"></i></a>
+                        <a href="https://slack.com/intl/en-ie/" target="_blank"><i class="slack large icon"></i></a>
+                    </div>
+                    <div class="row keepInTouch">
+                        <form class="footerForm">
+                            <label for="email">Keep in touch:</label>
+                            <input type="email" name="email" class="email" required placeholder="you@example.com" />
+                            <button type="submit" class="ui mini button">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <img src="images/spidermanlogo.webp" alt="The Spider-Man logo" />
+                </div>
+            </div>
+        </footer>
+        <dialog id="yourProfile">
+            <form class="ui form" id="yourProfileForm">
+                <div class="form-row">
+                    <label for="yourName">Name</label>
+                    <input type="text" name="yourName" id="yourName" autofocus required />
+                </div>
+                <div class="form-row">
+                    <label for="yourDOB">Date of Birth</label>
+                    <input type="date" name="yourDOB" id="yourDOB" required />
+                </div>
+                <div class="form-row">
+                    <label for="yourFavChar">Favourite Character</label>
+                    <input type="text" name="yourFavChar" id="yourFavChar" required />
+                </div>
+                <p>Pick a profile pic:</p>
+                <div class="ui grid" id="radios">
+                    <input type="radio" name="profilePic" id="chiwawaw" value="chiwawaw" />
+                    <label for="chiwawaw"><img src="images/chiwawaw.jpg" /></label>
+
+                    <input type="radio" name="profilePic" id="chiwowow" value="chiwowow" />
+                    <label for="chiwowow"><img src="images/chiwowow.jpg" /></label>
+
+                    <input type="radio" name="profilePic" id="monkey" value="monkey" />
+                    <label for="monkey"><img src="images/monkey.jpg" /></label>
+
+                    <input type="radio" name="profilePic" id="cooldog" value="cooldog" class="ui radio checkbox" />
+                    <label for="cooldog"><img src="images/cooldog.jpg" /></label>
+                </div>
+                <button id="makeProfile" type="submit" class="ui small primary right floated button">
+                    Make my profile!
+                </button>
+            </form>
+        </dialog>
+        <script src="js/script.js"></script>
+    </body>
+</html>
