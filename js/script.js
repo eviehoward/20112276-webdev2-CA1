@@ -819,11 +819,11 @@ const aboutPage = () => {
 };
 
 /************************ALL PAGES FUNCTIONALITY************************/
-if (location.pathname === "/datamanipulation.html") {
+if (location.pathname === "/datamanipulation") {
     dataManipulation();
-} else if (location.pathname === "/index.html") {
+} else if (location.pathname === "/") {
     indexPage();
-} else if (location.pathname === "/aboutpage.html") {
+} else if (location.pathname === "/aboutpage") {
     aboutPage();
 } //from stackoverflow
 
